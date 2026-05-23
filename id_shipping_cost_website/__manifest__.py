@@ -3,27 +3,36 @@
     "version": "19.0.1.0.0",
     "summary": "eCommerce checkout integration for Indonesia Shipping Cost (calibration banner + JSON rate endpoint).",
     "description": """
-Indonesia Shipping Cost — Website Checkout
-==========================================
-Companion add-on for `id_shipping_cost`. Installs automatically when
-both `id_shipping_cost` and `website_sale` are present.
-
-* Calibration banner on /shop/checkout when the operator has not yet
-  confirmed bundled rates are calibrated to their contracted prices.
-* JSON endpoint `/id_shipping/calculate` returning the full rate matrix
-  for the current cart (used by storefront customisations).
-
-The actual Indonesia courier picker reuses Odoo's built-in delivery
-method dropdown — each `delivery.carrier` with `delivery_type='id_offline'`
-shows up automatically.
+<h2>Indonesia Shipping Cost &mdash; Website Checkout</h2>
+<p><strong>Free LGPL-3 companion add-on</strong> for the paid
+<code>id_shipping_cost</code> module. Installs automatically when both
+<code>id_shipping_cost</code> and <code>website_sale</code> are present.</p>
+<ul>
+  <li><strong>Calibration banner</strong> on <code>/shop/checkout</code>
+  when the operator has not yet confirmed bundled rates are calibrated to
+  their contracted prices.</li>
+  <li><strong>JSON endpoint</strong> <code>POST /id_shipping/calculate</code>
+  returning the full sorted rate matrix for the current cart (used by
+  storefront customisations).</li>
+</ul>
+<p>The actual Indonesia courier picker reuses Odoo&apos;s built-in delivery
+method dropdown &mdash; every <code>delivery.carrier</code> with
+<code>delivery_type='id_offline'</code> shows up automatically. No fork of
+<code>website_sale</code> flow.</p>
     """,
     "author": "Muhammad Dzakwan Robbani",
     "website": "https://github.com/dzakwanrobbani/odoo-apps",
     "license": "LGPL-3",
     "category": "Website/Website",
+    "price": 0.0,
+    "currency": "USD",
     "depends": ["id_shipping_cost", "website_sale"],
     "data": [
         "views/website_templates.xml",
+    ],
+    "images": [
+        "static/description/icon.png",
+        "static/description/banner.png",
     ],
     "installable": True,
     "application": False,

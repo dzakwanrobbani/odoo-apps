@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Indonesia Shipping Cost — Website Checkout</title>
+</head>
+<body>
+
+<section style="background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%); color:#ffffff; padding:48px 24px; text-align:center;">
+    <h1 style="font-size:40px; margin:0 0 12px 0; letter-spacing:-0.5px;">Indonesia Shipping Cost &mdash; Website Checkout</h1>
+    <p style="font-size:20px; max-width:780px; margin:0 auto; line-height:1.5; opacity:0.95;">
+        Free LGPL-3 companion add-on for <strong>id_shipping_cost</strong>.
+        Adds the eCommerce-specific touches: calibration banner on
+        <code>/shop/checkout</code> and a JSON rate endpoint for
+        storefront customisations.
+    </p>
+    <p style="margin-top:24px;">
+        <span style="display:inline-block; background:#10b981; color:#fff; padding:6px 16px; border-radius:6px; font-weight:bold;">LGPL-3 · Free</span>
+        <span style="display:inline-block; background:#f59e0b; color:#1e293b; padding:6px 16px; border-radius:6px; font-weight:bold; margin-left:8px;">auto_install</span>
+        <span style="display:inline-block; background:#3b82f6; color:#fff; padding:6px 16px; border-radius:6px; font-weight:bold; margin-left:8px;">Odoo 19</span>
+    </p>
+</section>
+
+<section style="padding:40px 24px; max-width:920px; margin:0 auto;">
+    <h2 style="font-size:26px; border-bottom:3px solid #1e3a8a; padding-bottom:8px; color:#1e293b;">What this adds</h2>
+    <ul style="font-size:16px; line-height:1.9; color:#334155;">
+        <li><strong>Calibration banner</strong> on <code>/shop/checkout</code>. Inherits <code>website_sale.delivery_form</code>. Visible only when an <code>id_offline</code> carrier appears in the delivery method list <em>and</em> the operator has not yet ticked <strong>Settings &gt; Inventory &gt; Indonesia Shipping &gt; Rates Calibrated for Production</strong>.</li>
+        <li><strong>JSON endpoint</strong> <code>POST /id_shipping/calculate</code>. Returns the full sorted rate matrix (provider, service, price, ETD) for the current cart's origin/destination/weight. Useful for storefront customisations or pre-checkout estimators.</li>
+        <li><strong>Auto-install</strong> the moment both <code>id_shipping_cost</code> and <code>website_sale</code> are present. No manual setup.</li>
+    </ul>
+    <p style="font-size:15px; color:#475569; margin-top:16px;">
+        The actual courier picker reuses Odoo&apos;s built-in delivery method
+        dropdown &mdash; every <code>delivery.carrier</code> configured by the
+        merchant with <code>delivery_type='id_offline'</code> shows up
+        automatically. No fork of <code>website_sale</code>.
+    </p>
+</section>
+
+<section style="background:#f1f5f9; padding:32px 24px;">
+    <div style="max-width:920px; margin:0 auto;">
+        <h2 style="font-size:24px; margin-top:0; color:#1e293b;">Requires</h2>
+        <p style="font-size:16px; line-height:1.7; color:#334155; margin-bottom:0;">
+            This is a thin companion. It needs the paid parent
+            <a href="https://apps.odoo.com/apps/modules/19.0/id_shipping_cost"
+               style="color:#1e3a8a; font-weight:bold;">id_shipping_cost</a>
+            to do anything useful &mdash; the rate matrix, courier picker,
+            settings panel, and calibration logic all live there.
+        </p>
+    </div>
+</section>
+
+<section style="padding:40px 24px; max-width:920px; margin:0 auto;">
+    <h2 style="font-size:26px; border-bottom:3px solid #1e3a8a; padding-bottom:8px; color:#1e293b;">Installation</h2>
+    <ol style="font-size:16px; line-height:1.8; color:#334155;">
+        <li>Install the paid parent <code>id_shipping_cost</code> from apps.odoo.com.</li>
+        <li>Make sure <code>website_sale</code> (eCommerce) is installed.</li>
+        <li>This module installs automatically &mdash; no manual action needed.</li>
+        <li>(Recommended) Open <strong>Settings &gt; Inventory &gt; Indonesia Shipping</strong>, calibrate the bundled rates against your contracted courier prices, then tick <strong>Rates Calibrated for Production</strong> to remove the warning banner from the storefront.</li>
+    </ol>
+</section>
+
+<footer style="background:#1e3a8a; color:#ffffff; text-align:center; padding:20px;">
+    <p style="margin:0; font-size:14px; opacity:0.9;">Indonesia Shipping Cost &mdash; Website Checkout &middot; v19.0.1.0.0 &middot; LGPL-3 &middot; Free</p>
+</footer>
+
+</body>
+</html>
