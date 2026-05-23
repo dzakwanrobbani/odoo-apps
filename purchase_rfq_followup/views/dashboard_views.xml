@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_prf_dashboard_list" model="ir.ui.view">
+        <field name="name">res.partner.prf.dashboard.list</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <list string="RFQ Follow-Up Insights" default_order="prf_pending_rfqs desc, prf_avg_response_days desc">
+                <field name="name"/>
+                <field name="prf_total_rfqs"/>
+                <field name="prf_confirmed_rfqs"/>
+                <field name="prf_response_rate" widget="percentage"/>
+                <field name="prf_avg_response_days" widget="float"/>
+                <field name="prf_pending_rfqs"/>
+                <field name="prf_overdue_count" decoration-danger="prf_overdue_count > 0"/>
+                <field name="prf_smart_suggestion"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_prf_dashboard_kanban" model="ir.ui.view">
+        <field name="name">res.partner.prf.dashboard.kanban</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_dashboard" default_order="prf_pending_rfqs desc">
+                <field name="name"/>
+                <field name="prf_total_rfqs"/>
+                <field name="prf_confirmed_rfqs"/>
+                <field name="prf_response_rate"/>
+                <field name="prf_avg_response_days"/>
+                <field name="prf_pending_rfqs"/>
+                <field name="prf_overdue_count"/>
+                <field name="prf_smart_suggestion"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="o_kanban_card_header mb-2">
+                            <strong><field name="name"/></strong>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <span class="text-muted">Pending:</span>
+                                <strong><field name="prf_pending_rfqs"/></strong>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted">Overdue:</span>
+                                <strong t-att-class="record.prf_overdue_count.raw_value &gt; 0 ? 'text-danger' : ''">
+                                    <field name="prf_overdue_count"/>
+                                </strong>
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-6">
+                                <span class="text-muted">Total RFQs:</span>
+                                <field name="prf_total_rfqs"/>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted">Confirmed:</span>
+                                <field name="prf_confirmed_rfqs"/>
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-12">
+                                <span class="text-muted">Avg response:</span>
+                                <field name="prf_avg_response_days"/> days
+                            </div>
+                        </div>
+                        <div class="mt-2 fst-italic small" invisible="not prf_smart_suggestion">
+                            💡 <field name="prf_smart_suggestion"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_prf_dashboard_pivot" model="ir.ui.view">
+        <field name="name">res.partner.prf.dashboard.pivot</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <pivot string="Vendor Response Pivot">
+                <field name="name" type="row"/>
+                <field name="prf_avg_response_days" type="measure"/>
+                <field name="prf_response_rate" type="measure"/>
+                <field name="prf_pending_rfqs" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_prf_dashboard_search" model="ir.ui.view">
+        <field name="name">res.partner.prf.dashboard.search</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search string="RFQ Follow-Up Insights">
+                <field name="name"/>
+                <field name="vat"/>
+                <field name="country_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_prf_dashboard" model="ir.actions.act_window">
+        <field name="name">RFQ Follow-Up Insights</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,list,pivot</field>
+        <field name="domain">[('supplier_rank','>',0)]</field>
+        <field name="search_view_id" ref="view_prf_dashboard_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No vendor with RFQ history yet</p>
+            <p>Send an RFQ to a vendor and confirm a few orders. This dashboard
+               will then show per-vendor response metrics and rule-based
+               suggestions for tuning follow-up intervals.</p>
+        </field>
+    </record>
+</odoo>

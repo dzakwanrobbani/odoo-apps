@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Purchase RFQ Follow-Up</title>
+</head>
+<body>
+
+<section style="background:#5e35b1; color:#ffffff; padding:48px 24px; text-align:center;">
+    <h1 style="font-size:42px; margin:0 0 12px 0;">Never Lose Track of a Pending RFQ</h1>
+    <p style="font-size:20px; max-width:760px; margin:0 auto; line-height:1.5;">
+        Auto-schedule three internal follow-up activities the moment an RFQ is sent
+        to a vendor. Pending follow-ups close themselves when the order is confirmed
+        or cancelled. Plus a per-vendor insight dashboard with rule-based smart
+        suggestions.
+    </p>
+    <p style="margin-top:24px;">
+        <span style="display:inline-block; background:#28a745; color:#fff; padding:6px 16px; border-radius:4px; font-weight:bold;">LGPL-3</span>
+        <span style="display:inline-block; background:#007bff; color:#fff; padding:6px 16px; border-radius:4px; font-weight:bold; margin-left:8px;">Odoo 19 CE &amp; EE</span>
+        <span style="display:inline-block; background:#ffc107; color:#000; padding:6px 16px; border-radius:4px; font-weight:bold; margin-left:8px;">No external AI</span>
+    </p>
+</section>
+
+<section style="padding:48px 24px; max-width:960px; margin:0 auto;">
+    <h2 style="font-size:28px; border-bottom:2px solid #5e35b1; padding-bottom:8px;">What it does</h2>
+    <ul style="font-size:16px; line-height:1.8;">
+        <li><strong>Auto-creates 3 internal follow-up activities</strong> when you click "Send by Email" on an RFQ.</li>
+        <li><strong>Configurable intervals</strong> &mdash; default day +2, +5, +10.</li>
+        <li><strong>Auto-cleanup</strong> &mdash; activities close themselves when the order is confirmed or cancelled.</li>
+        <li><strong>Manual button</strong> &mdash; "Schedule Follow-Ups" on the RFQ form for one-click rescheduling.</li>
+        <li><strong>Smart Insights Dashboard</strong> &mdash; per-vendor stats (response rate, avg response days, pending, overdue) plus rule-based suggestion for tuning intervals.</li>
+        <li><strong>No external dependencies, no external AI service</strong> &mdash; all "intelligence" is rule-based heuristics computed from your existing data.</li>
+    </ul>
+</section>
+
+<section style="background:#f5f5f5; padding:48px 24px;">
+    <div style="max-width:960px; margin:0 auto;">
+        <h2 style="font-size:28px; border-bottom:2px solid #5e35b1; padding-bottom:8px;">Screenshots</h2>
+
+        <h3 style="margin-top:32px;">1. Three follow-ups in the RFQ chatter, scheduled automatically</h3>
+        <img src="screenshot_01_chatter.png" alt="RFQ chatter with three follow-up activities" style="max-width:100%; border:1px solid #ccc;"/>
+
+        <h3 style="margin-top:32px;">2. Settings panel &mdash; configure your own intervals</h3>
+        <img src="screenshot_02_settings.png" alt="Purchase settings page showing the auto follow-up configuration" style="max-width:100%; border:1px solid #ccc;"/>
+
+        <h3 style="margin-top:32px;">3. Manual "Schedule Follow-Ups" button</h3>
+        <img src="screenshot_03_button.png" alt="Manual button on the RFQ form" style="max-width:100%; border:1px solid #ccc;"/>
+
+        <h3 style="margin-top:32px;">4. RFQ Follow-Up Insights dashboard &mdash; per-vendor response intelligence</h3>
+        <img src="screenshot_04_dashboard.png" alt="Insights dashboard showing per-vendor metrics and smart suggestions" style="max-width:100%; border:1px solid #ccc;"/>
+
+        <h3 style="margin-top:32px;">5. My Activities &mdash; buyer view</h3>
+        <img src="screenshot_05_activities.png" alt="Buyer activities dashboard with pending RFQ follow-ups" style="max-width:100%; border:1px solid #ccc;"/>
+
+        <h3 style="margin-top:32px;">6. Before / after comparison</h3>
+        <img src="screenshot_06_compare.png" alt="Before and after comparison" style="max-width:100%; border:1px solid #ccc;"/>
+    </div>
+</section>
+
+<section style="padding:48px 24px; max-width:960px; margin:0 auto;">
+    <h2 style="font-size:28px; border-bottom:2px solid #5e35b1; padding-bottom:8px;">Smart Suggestion &mdash; how it works</h2>
+    <p style="font-size:16px; line-height:1.6;">
+        The dashboard computes each vendor's average response time (days from RFQ
+        creation to PO confirmation) and applies a simple rule:
+    </p>
+    <ul style="font-size:16px; line-height:1.8;">
+        <li>If avg response &lt; your 2nd-interval setting → "Responds fast, consider tighter intervals"</li>
+        <li>If avg response &gt; your 3rd-interval setting → "Responds slow, suggested intervals X / Y / Z"</li>
+        <li>Otherwise → "Matches default schedule"</li>
+        <li>Vendors with fewer than 3 historical RFQs get no suggestion (insufficient data)</li>
+    </ul>
+    <p style="font-size:14px; color:#666; font-style:italic; margin-top:16px;">
+        100% rule-based. No LLM, no external API, no data leaves your Odoo instance.
+    </p>
+
+    <h2 style="font-size:28px; border-bottom:2px solid #5e35b1; padding-bottom:8px; margin-top:32px;">Installation</h2>
+    <ol style="font-size:16px; line-height:1.8;">
+        <li>Place this module folder in your Odoo addons path.</li>
+        <li>Restart Odoo and update the apps list.</li>
+        <li>Install <em>Purchase RFQ Follow-Up</em>.</li>
+        <li>Optionally adjust intervals in <strong>Settings &gt; Purchase</strong>.</li>
+    </ol>
+
+    <h2 style="font-size:28px; border-bottom:2px solid #5e35b1; padding-bottom:8px; margin-top:32px;">Support</h2>
+    <p style="font-size:16px; line-height:1.6;">
+        This is a free, community-supported module released under LGPL-3.
+        Issues and pull requests are welcome on GitHub.
+    </p>
+</section>
+
+<footer style="background:#5e35b1; color:#ffffff; text-align:center; padding:24px;">
+    <p style="margin:0;">Purchase RFQ Follow-Up &middot; v19.0.1.0.0 &middot; LGPL-3</p>
+</footer>
+
+</body>
+</html>

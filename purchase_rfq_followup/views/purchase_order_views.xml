@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit_prf" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit.prf</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_schedule_followups"
+                        type="object"
+                        string="Schedule Follow-Ups"
+                        invisible="state not in ('draft', 'sent', 'to approve')"
+                        help="Create three internal follow-up activities at the configured intervals. Replaces existing auto follow-ups."/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

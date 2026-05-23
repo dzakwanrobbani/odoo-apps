@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_prf" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.prf</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='purchase_setting_container']" position="inside">
+                <setting id="prf_setting"
+                         string="Auto Follow-Up on Sent RFQ"
+                         help="Automatically schedule three internal follow-up activities when an RFQ is sent to a vendor.">
+                    <field name="rfq_followup_auto_enable"/>
+                    <div class="content-group" invisible="not rfq_followup_auto_enable">
+                        <div class="row mt-2">
+                            <label for="rfq_followup_days_1" class="col-lg-4 o_light_label"/>
+                            <field name="rfq_followup_days_1"/>
+                        </div>
+                        <div class="row">
+                            <label for="rfq_followup_days_2" class="col-lg-4 o_light_label"/>
+                            <field name="rfq_followup_days_2"/>
+                        </div>
+                        <div class="row">
+                            <label for="rfq_followup_days_3" class="col-lg-4 o_light_label"/>
+                            <field name="rfq_followup_days_3"/>
+                        </div>
+                        <div class="row">
+                            <label for="rfq_followup_activity_type_id" class="col-lg-4 o_light_label"/>
+                            <field name="rfq_followup_activity_type_id"/>
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

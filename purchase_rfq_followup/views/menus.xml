@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_prf_dashboard"
+              name="RFQ Follow-Up Insights"
+              parent="purchase.purchase_report_main"
+              action="action_prf_dashboard"
+              sequence="50"
+              groups="purchase.group_purchase_manager"/>
+</odoo>
