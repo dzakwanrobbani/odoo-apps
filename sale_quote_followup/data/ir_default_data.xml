@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
     <function model="ir.config_parameter" name="set_param">
-        <value>sale_quotation_followup.auto_enable</value>
+        <value>sale_quote_followup.auto_enable</value>
         <value>True</value>
     </function>
     <function model="ir.config_parameter" name="set_param">
-        <value>sale_quotation_followup.days_1</value>
+        <value>sale_quote_followup.days_1</value>
         <value>2</value>
     </function>
     <function model="ir.config_parameter" name="set_param">
-        <value>sale_quotation_followup.days_2</value>
+        <value>sale_quote_followup.days_2</value>
         <value>5</value>
     </function>
     <function model="ir.config_parameter" name="set_param">
-        <value>sale_quotation_followup.days_3</value>
+        <value>sale_quote_followup.days_3</value>
         <value>10</value>
     </function>
 </odoo>

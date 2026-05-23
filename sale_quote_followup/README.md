@@ -13,7 +13,7 @@ Auto-schedules three follow-up activities the moment an Odoo quotation is sent. 
 
 ## Installation
 
-1. Place the `sale_quotation_followup` folder in your Odoo addons path.
+1. Place the `sale_quote_followup` folder in your Odoo addons path.
 2. Restart Odoo and update the apps list.
 3. Search for "Sales Quotation Follow-Up Activities" and install.
 4. (Optional) Adjust intervals in **Settings > Sales > Quotations > Auto Follow-Up on Sent Quotations**.

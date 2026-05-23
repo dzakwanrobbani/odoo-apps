@@ -6,7 +6,7 @@ Free Odoo 19 modules by Muhammad Dzakwan Robbani — published on [apps.odoo.com
 
 | Module | Summary | License |
 | --- | --- | --- |
-| [`sale_quotation_followup`](sale_quotation_followup/) | Auto-schedules three follow-up activities when a quotation is sent. Pending follow-ups auto-close on order confirm/cancel. | LGPL-3 |
+| [`sale_quote_followup`](sale_quote_followup/) | Auto-schedules three follow-up activities when a quotation is sent. Pending follow-ups auto-close on order confirm/cancel. | LGPL-3 |
 
 ## Branch convention
 

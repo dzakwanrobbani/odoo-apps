@@ -20,7 +20,7 @@ class SaleOrder(models.Model):
                     order.action_schedule_followups()
                 except Exception as exc:
                     _logger.warning(
-                        "sale_quotation_followup: failed to schedule "
+                        "sale_quote_followup: failed to schedule "
                         "follow-ups for %s: %s", order.name, exc,
                     )
         return result
@@ -47,7 +47,7 @@ class SaleOrder(models.Model):
         activity_type = self._sqf_activity_type()
         if not activity_type:
             _logger.info(
-                "sale_quotation_followup: no mail.activity.type available, "
+                "sale_quote_followup: no mail.activity.type available, "
                 "skipping scheduling for %s", self.name,
             )
             return False
@@ -91,7 +91,7 @@ class SaleOrder(models.Model):
                 act.action_feedback(feedback=feedback)
             except Exception as exc:
                 _logger.warning(
-                    "sale_quotation_followup: failed to close activity %s: %s",
+                    "sale_quote_followup: failed to close activity %s: %s",
                     act.id, exc,
                 )
                 act.unlink()
@@ -109,23 +109,23 @@ class SaleOrder(models.Model):
 
     def _sqf_auto_enabled(self):
         param = self.env["ir.config_parameter"].sudo().get_param(
-            "sale_quotation_followup.auto_enable", "True",
+            "sale_quote_followup.auto_enable", "True",
         )
         return str(param).lower() in ("true", "1", "yes")
 
     def _sqf_intervals(self):
         ICP = self.env["ir.config_parameter"].sudo()
         try:
-            d1 = int(ICP.get_param("sale_quotation_followup.days_1", "2"))
-            d2 = int(ICP.get_param("sale_quotation_followup.days_2", "5"))
-            d3 = int(ICP.get_param("sale_quotation_followup.days_3", "10"))
+            d1 = int(ICP.get_param("sale_quote_followup.days_1", "2"))
+            d2 = int(ICP.get_param("sale_quote_followup.days_2", "5"))
+            d3 = int(ICP.get_param("sale_quote_followup.days_3", "10"))
         except (TypeError, ValueError):
             d1, d2, d3 = 2, 5, 10
         return [d for d in (d1, d2, d3) if d > 0]
 
     def _sqf_activity_type(self):
         ICP = self.env["ir.config_parameter"].sudo()
-        type_id = ICP.get_param("sale_quotation_followup.activity_type_id")
+        type_id = ICP.get_param("sale_quote_followup.activity_type_id")
         if type_id:
             try:
                 act = self.env["mail.activity.type"].browse(
