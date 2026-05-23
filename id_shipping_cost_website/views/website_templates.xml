@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="delivery_form_inherit_id_shipping"
+              name="Indonesia Shipping calibration banner"
+              inherit_id="website_sale.delivery_form">
+        <xpath expr="//h4[hasclass('mb-3')]" position="before">
+            <t t-set="id_shipping_calibrated"
+               t-value="request.env['ir.config_parameter'].sudo().get_param('id_shipping_cost.rates_calibrated', 'False')"/>
+            <t t-set="id_shipping_has_offline"
+               t-value="any(dm.delivery_type == 'id_offline' for dm in delivery_methods)"/>
+            <div t-if="id_shipping_has_offline and id_shipping_calibrated.lower() in ('false', '0')"
+                 class="alert alert-warning mb-3"
+                 role="alert">
+                <i class="fa fa-exclamation-triangle me-2"/>
+                <strong>Estimasi ongkir</strong> — tarif berikut adalah seed bundle dari
+                <em>id_shipping_cost</em>. Operator toko belum mengkonfirmasi kalibrasi
+                ke harga kontrak kurir. Final invoice mungkin berbeda.
+            </div>
+        </xpath>
+    </template>
+
+</odoo>
